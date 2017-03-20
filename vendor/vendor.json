@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "SG70C7DcBncl0z/+ThJQRnLCFs8=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "9fe8afe96d32468fba230b8b22acea86251f0506",
+			"revisionTime": "2015-07-16T21:10:27Z"
+		}
+	],
+	"rootPath": "github.com/zuriu/mobalysis-snowcap-cloud-api"
+}
