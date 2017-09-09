@@ -124,7 +124,8 @@ func (r *Response) ParseResult(privateKey string) (map[string]interface{}, error
 		return nil, fmt.Errorf("response token is invalid")
 	}
 
-	result, ok := token.Claims["result"].(map[string]interface{})
+	claims := token.Claims.(jwt.MapClaims)
+	result, ok := claims["result"].(map[string]interface{})
 	if !ok {
 		return nil, fmt.Errorf("response not of type map[string]interface{}")
 	}

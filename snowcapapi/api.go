@@ -14,11 +14,15 @@ import (
 
 func Get(url string, publicKey string, privateKey string) (*Response, error) {
 
-	// Assemble the signature...
+	// Assemble signature claims...
 	t := time.Now()
+	claims := map[string]interface{}{}
+	claims["iat"] = t.Unix()
+	claims["exp"] = t.Add(1 * time.Minute).Unix()
+
+	// Assemble the signature...
 	token := jwt.New(jwt.SigningMethodHS256)
-	token.Claims["iat"] = t.Unix()
-	token.Claims["exp"] = t.Add(1 * time.Minute).Unix()
+	token.Claims = jwt.MapClaims(claims)
 	signedToken, err := token.SignedString([]byte(privateKey))
 
 	client := &http.Client{}
